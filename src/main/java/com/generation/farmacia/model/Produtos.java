@@ -3,7 +3,7 @@ package com.generation.farmacia.model;
 import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.generation.farmacia.model.Categorias;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,20 +36,20 @@ public class Produtos {
 	private String marca;
 	
 	@NotNull
-	@PositiveOrZero // valida que o númer seja positivo (considerando o 0 )
+	@PositiveOrZero 
 	private Integer quantidade;
 	
 	
 	@PositiveOrZero 
-	@Column (precision = 10, scale = 2, nullable = false) // configura o tamanh do campo no BD
-	@Digits(integer = 8, fraction = 2) // valida os dados inseridos em memória, antes de gravar no BD
+	@Column (precision = 10, scale = 2, nullable = false) 
+	@Digits(integer = 8, fraction = 2) 
 	private BigDecimal preco;
 
 	
 	// Criando relacionamento entre tabelas
 	@ManyToOne
 	@JsonIgnoreProperties("produtos")
-	private Categorias categorias; // Objeto categorias do 'tipo' da Classe Categorias (model). Representa a FK
+	private Categorias categorias; 
 
 
 	public Long getId() {
